@@ -11,10 +11,6 @@ mongoose.connect('mongodb://localhost/local');
 })
 export class ApplicationModule implements NestModule {
   configure(consumer: MiddlewaresConsumer): void {
-      consumer.apply(CorsMiddleware).forRoutes(
-          {
-              path: '/', method: RequestMethod.GET,
-          },
-      );
+      consumer.apply(CorsMiddleware).forRoutes( { path: '*', method: RequestMethod.ALL }, );
   }
 }
