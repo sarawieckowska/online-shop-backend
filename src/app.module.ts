@@ -1,10 +1,12 @@
 import { Module, NestModule, MiddlewaresConsumer, RequestMethod } from '@nestjs/common';
-import { AppController } from './app.controller';
+import { CreateAccount } from './controllers/CreateAccount';
 import { CorsMiddleware } from './cors.controller';
+import * as mongoose from 'mongoose';
 
+mongoose.connect('mongodb://localhost/local');
 @Module({
   imports: [],
-  controllers: [AppController],
+  controllers: [CreateAccount],
   components: [],
 })
 export class ApplicationModule implements NestModule {
