@@ -1,26 +1,19 @@
 import { Post, Controller, Res, Body } from '@nestjs/common';
 import {User} from '../models/User';
 
-const user = new User({
-    login: 'login',
-    password: 'password',
-    email: 'email@google.com'
-});
-
-user.save((err) => {
-    if (err) {
-        console.log(err);
-    }
-    console.log('saved');
-});
-@Controller('user/create')
+@Controller('user')
 export class CreateAccount {
-    @Post()
 
+    @Post('/create')
     createUser(@Res() res, @Body() body) {
-        console.log(body);
-        console.log(typeof body);
+        const user = new User(body);
+        user.save();
+        res.status(201).send();
+    }
 
-        res.status(201).send('created');
+    @Post('/login')
+    login(@Res() res, @Body() body) {
+        console.log(body);
+        res.status(201).send();
     }
 }

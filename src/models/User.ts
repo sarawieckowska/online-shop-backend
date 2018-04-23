@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import {IUser} from '../interfaces/user';
+import { IUser } from '../interfaces/user';
 
 export interface IUserModel extends IUser, mongoose.Document {}
 
@@ -13,11 +13,8 @@ const UserSchema = new mongoose.Schema({
     lastName : String
 });
 UserSchema.pre('save', function(next) {
-    const now = new Date();
     this._id = new mongoose.Types.ObjectId();
-    if (!this.createdAt) {
-        this.createdAt = now;
-    }
+    this.createdAt = new Date();
     next();
 });
 
