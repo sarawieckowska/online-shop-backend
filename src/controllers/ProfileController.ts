@@ -1,6 +1,7 @@
 import { Post, Controller, Res, Body } from '@nestjs/common';
 import {User} from '../models/User';
 import {Profile} from '../enums/messages';
+import * as bcrypt from 'bcrypt-nodejs';
 
 @Controller('user')
 export class ProfileController {
@@ -16,15 +17,19 @@ export class ProfileController {
     login(@Res() res, @Body() body) {
         const callback = (err, docs) => {
             if (!docs.length) {
-                return res.status(403).send({message: Profile.notFound);
+                return res.status(403).send({message: Profile.notFound});
             }
-            if (body.password !== docs[0]._doc.password) {
-                return res.status(403).send({message: Profile.incorrectPassword});
-            }
-            console.log(err);
-            console.log(body);
-            console.log(docs);
-            res.status(202).send();
+            bcrypt.compare(body.password, docs[0]._doc.password, (err, result) => {
+                if (!result) {
+                    return res.status(403).send({message: Profile.incorrectPassword});
+                }
+                res.status(202).send({
+                    createdAt: docs[0].createdAt,
+                    email: docs[0].email,
+                    login: docs[0].login,
+                    _id: docs[0]._id
+                });
+            });
         };
         User.find({login: body.login}).exec(callback);
     }

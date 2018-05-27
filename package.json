@@ -15,6 +15,7 @@
     "@nestjs/microservices": "^4.5.8",
     "@nestjs/testing": "^4.5.5",
     "@nestjs/websockets": "^4.5.8",
+    "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.4",
     "mongodb": "^3.0.4",
     "mongoose": "^5.0.11",
@@ -23,6 +24,7 @@
     "typescript": "^2.6.2"
   },
   "devDependencies": {
+    "@types/bcrypt-nodejs": "0.0.30",
     "@types/mongodb": "^3.0.8",
     "@types/mongoose": "^5.0.7",
     "@types/node": "^9.3.0",
