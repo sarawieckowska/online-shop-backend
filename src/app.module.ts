@@ -1,12 +1,16 @@
 import { Module, NestModule, MiddlewaresConsumer, RequestMethod } from '@nestjs/common';
 import { ProfileController } from './controllers/ProfileController';
+import { CategoriesController } from './controllers/CategoriesController';
 import { CorsMiddleware } from './controllers/Cors';
 import * as mongoose from 'mongoose';
 
 mongoose.connect('mongodb://localhost/local');
 @Module({
   imports: [],
-  controllers: [ProfileController],
+  controllers: [
+      ProfileController,
+      CategoriesController
+  ],
   components: [],
 })
 export class ApplicationModule implements NestModule {
