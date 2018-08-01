@@ -1,6 +1,6 @@
 import { Get, Controller, Res } from '@nestjs/common';
-import { Categories } from '../models/Categories';
-import {Profile} from '../enums/messages';
+import { Category } from '../models/Categories';
+import { Profile } from '../enums/messages';
 
 @Controller('categories')
 export class CategoriesController {
@@ -13,7 +13,7 @@ export class CategoriesController {
             }
             res.status(201).send(docs);
         };
-        Categories.find({}).exec(callback);
+        Category.find({}).exec(callback);
     }
 
 }

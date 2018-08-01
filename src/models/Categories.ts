@@ -13,4 +13,4 @@ CategoriesSchema.pre('save', function(next) {
     next();
 });
 
-export const Categories: mongoose.Model<ICategoriesModel> = mongoose.model<ICategoriesModel>('Categories', CategoriesSchema);
+export const Category: mongoose.Model<ICategoriesModel> = mongoose.model<ICategoriesModel>('Categories', CategoriesSchema);

@@ -3,13 +3,15 @@ import { ProfileController } from './controllers/ProfileController';
 import { CategoriesController } from './controllers/CategoriesController';
 import { CorsMiddleware } from './controllers/Cors';
 import * as mongoose from 'mongoose';
+import { ItemsController } from './controllers/ItemsController';
 
 mongoose.connect('mongodb://localhost/local');
 @Module({
   imports: [],
   controllers: [
       ProfileController,
-      CategoriesController
+      CategoriesController,
+      ItemsController
   ],
   components: [],
 })
