@@ -1,6 +1,6 @@
 import { Get, Controller, Res, Req } from '@nestjs/common';
 import { Items } from '../models/Items';
-import {Profile} from '../enums/messages';
+import { Profile } from '../enums/messages';
 
 @Controller('items')
 export class ItemsController {

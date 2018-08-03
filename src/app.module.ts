@@ -1,9 +1,10 @@
 import { Module, NestModule, MiddlewaresConsumer, RequestMethod } from '@nestjs/common';
-import { ProfileController } from './controllers/ProfileController';
+import { ProfileController } from './controllers/profile.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { CorsMiddleware } from './controllers/Cors';
 import * as mongoose from 'mongoose';
 import { ItemsController } from './controllers/items.controller';
+import { AgreementController } from './controllers/agreement.controller';
 
 mongoose.connect('mongodb://localhost/local');
 @Module({
@@ -11,7 +12,8 @@ mongoose.connect('mongodb://localhost/local');
   controllers: [
       ProfileController,
       CategoriesController,
-      ItemsController
+      ItemsController,
+      AgreementController
   ],
   components: [],
 })
