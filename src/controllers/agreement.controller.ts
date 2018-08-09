@@ -1,4 +1,4 @@
-import { Get, Post, Controller, Res } from '@nestjs/common';
+import { Get, Post, Controller, Res, Body } from '@nestjs/common';
 import { Agreement } from '../models/Agreement';
 import { Profile } from '../enums/messages';
 
@@ -6,7 +6,7 @@ import { Profile } from '../enums/messages';
 export class AgreementController {
 
     @Get('/list')
-    createAgreement(@Res() res, @Body() body) {
+    createAgreement(@Res() res) {
         const agreement = new Agreement(body);
         agreement.save();
         res.status(201).send();
@@ -17,8 +17,8 @@ export class AgreementController {
         const callback = (err, docs) => {
             if (!docs.length) {
                 return res.status(403).send({message: Profile.notFound});
-            });
+            }
         };
         Agreement.find({login: body.login}).exec(callback);
-    };
+    }
 }
