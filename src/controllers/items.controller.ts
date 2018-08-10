@@ -21,5 +21,4 @@ export class ItemsController {
         };
         Items.find({}).exec(callback);
     }
-
 }
