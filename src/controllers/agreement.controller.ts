@@ -1,4 +1,4 @@
-import { Get, Post, Controller, Res, Body } from '@nestjs/common';
+import { Get, Controller, Res, Req } from '@nestjs/common';
 import { Agreement } from '../models/Agreement';
 import { Profile } from '../enums/messages';
 
@@ -6,19 +6,19 @@ import { Profile } from '../enums/messages';
 export class AgreementController {
 
     @Get('/list')
-    createAgreement(@Res() res) {
-        const agreement = new Agreement(body);
-        agreement.save();
-        res.status(201).send();
-    }
-
-    @Post('/login')
-    login(@Res() res, @Body() body) {
+    getAgreements(@Res() res, @Req() request) {
         const callback = (err, docs) => {
+            console.log(request);
+            /*
+              const user = new Items({name: 'a shoe', price: 'expensive', category: ''});
+             user.save();*/
+
+            // TODO filter results with category name
             if (!docs.length) {
                 return res.status(403).send({message: Profile.notFound});
             }
+            res.status(201).send(docs);
         };
-        Agreement.find({login: body.login}).exec(callback);
+        Agreement.find({}).exec(callback);
     }
 }
