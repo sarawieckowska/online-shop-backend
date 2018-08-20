@@ -6,7 +6,8 @@ export interface IAgreementModel extends IAgreement, mongoose.Document {}
 const AgreementSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     title: String,
-    paragraph: Array
+    paragraph: Array,
+    name: String
 });
 
 AgreementSchema.pre('save', function(next) {

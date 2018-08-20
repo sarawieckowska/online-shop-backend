@@ -1,4 +1,4 @@
-import {Get, Controller, Res, Req} from '@nestjs/common';
+import { Get, Controller, Res, Req } from '@nestjs/common';
 import { Agreement } from '../models/Agreement';
 import { Profile } from '../enums/messages';
 
