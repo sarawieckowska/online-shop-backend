@@ -1,24 +1,21 @@
 import { Get, Controller, Res, Req } from '@nestjs/common';
-import { Items } from '../models/Items';
+import { Product } from '../models/Product';
 import { Profile } from '../enums/messages';
 
-@Controller('items')
-export class ItemsController {
+@Controller('product')
+export class ProductController {
 
     @Get('/list')
-    getProducts(@Res() res, @Req() request) {
+    getProduct(@Res() res, @Req() request) {
         const callback = (err, docs) => {
             console.log(request);
-
-            const user = new Items({name: 'shirt', price: '£5,99', category: 'Tops & T-Shirts'});
+            const user = new Product({price: '£20,99', title: 'Blouse', paragraph: 'something', photo: 'something'});
             user.save();
-
-            // TODO filter results with category name
             if (!docs.length) {
                 return res.status(403).send({message: Profile.notFound});
             }
             res.status(201).send(docs);
         };
-        Items.find({}).exec(callback);
+        Product.find({}).exec(callback);
     }
 }
