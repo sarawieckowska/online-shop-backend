@@ -10,8 +10,8 @@ export class ItemsController {
         const callback = (err, docs) => {
             console.log(request);
 
-            const user = new Items({name: 'shirt', price: '£5,99', category: 'Tops & T-Shirts'});
-            user.save();
+            /*const user = new Items({name: 'shirt', price: '£5,99', category: 'Tops & T-Shirts'});
+            user.save();*/
 
             // TODO filter results with category name
             if (!docs.length) {

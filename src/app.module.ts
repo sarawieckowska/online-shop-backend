@@ -5,6 +5,7 @@ import { CorsMiddleware } from './controllers/Cors';
 import * as mongoose from 'mongoose';
 import { ItemsController } from './controllers/items.controller';
 import { AgreementController } from './controllers/agreement.controller';
+import { ProductsController } from './controllers/products.controller';
 
 mongoose.connect('mongodb://localhost/local');
 @Module({
@@ -13,7 +14,8 @@ mongoose.connect('mongodb://localhost/local');
       ProfileController,
       CategoriesController,
       ItemsController,
-      AgreementController
+      AgreementController,
+      ProductsController
   ],
   components: [],
 })
