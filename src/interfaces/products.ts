@@ -1,5 +1,5 @@
 export interface IProducts {
-    price: string;
+    price: number;
     title: string;
     description: string;
     gender: string;
