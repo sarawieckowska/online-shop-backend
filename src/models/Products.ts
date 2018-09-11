@@ -5,6 +5,7 @@ export interface IProductsModel extends IProducts, mongoose.Document {}
 
 const ProductsSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
+    category: String,
     price: Number,
     title: String,
     description: String,
