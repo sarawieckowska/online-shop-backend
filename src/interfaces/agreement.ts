@@ -1,13 +1,13 @@
 export interface IAgreement {
     name: string;
     title: string;
-    paragraph: Array<string>;
-    paragraph1: Array<string>;
-    paragraph2: Array<string>;
-    list: Array<string>;
-    list1: Array<string>;
-    list2: Array<string>;
-    list3: Array<string>;
-    list4: Array<string>;
-    list5: Array<string>;
+    paragraph: string;
+    paragraph1: string;
+    paragraph2: string;
+    list: string;
+    list1: string;
+    list2: string;
+    list3: string;
+    list4: string;
+    list5: string;
 }
