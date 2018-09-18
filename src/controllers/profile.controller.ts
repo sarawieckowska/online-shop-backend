@@ -1,4 +1,4 @@
-import { Post, Controller, Res, Body } from '@nestjs/common';
+import { Post, Controller, Res, Body, Req } from '@nestjs/common';
 import { User } from '../models/User';
 import { Profile } from '../enums/messages';
 import * as bcrypt from 'bcrypt-nodejs';
@@ -14,7 +14,7 @@ export class ProfileController {
     }
 
     @Post('/login')
-    login(@Res() res, @Body() body) {
+    login(@Res() res, @Body() body, @Req() req) {
         const callback = (err, docs) => {
             if (!docs.length) {
                 return res.status(403).send({message: Profile.notFound});
@@ -24,9 +24,9 @@ export class ProfileController {
                     return res.status(403).send({message: Profile.incorrectPassword});
                 }
                 res.status(202).send({
-                    createdAt: docs[0].createdAt,
                     email: docs[0].email,
-                    _id: docs[0]._id
+                    _id: docs[0]._id,
+                    token: 'jakistring'
                 });
             });
         };
