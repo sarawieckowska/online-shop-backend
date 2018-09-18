@@ -1,6 +1,6 @@
 import { Post, Controller, Res, Body } from '@nestjs/common';
-import {User} from '../models/User';
-import {Profile} from '../enums/messages';
+import { User } from '../models/User';
+import { Profile } from '../enums/messages';
 import * as bcrypt from 'bcrypt-nodejs';
 
 @Controller('user')
@@ -26,11 +26,10 @@ export class ProfileController {
                 res.status(202).send({
                     createdAt: docs[0].createdAt,
                     email: docs[0].email,
-                    login: docs[0].login,
                     _id: docs[0]._id
                 });
             });
         };
-        User.find({login: body.login}).exec(callback);
+        User.find({email: body.email}).exec(callback);
     }
 }

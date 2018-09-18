@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
-import { IProducts } from '../interfaces/products';
+import { IProduct } from '../interfaces/products';
 
-export interface IProductsModel extends IProducts, mongoose.Document {}
+export interface IProductModel extends IProduct, mongoose.Document {}
 
 const ProductsSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -17,4 +17,4 @@ ProductsSchema.pre('save', function(next) {
     next();
 });
 
-export const Product: mongoose.Model<IProductsModel> = mongoose.model<IProductsModel>('Products', ProductsSchema);
+export const Product: mongoose.Model<IProductModel> = mongoose.model<IProductModel>('Products', ProductsSchema);
