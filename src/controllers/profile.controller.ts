@@ -2,6 +2,7 @@ import { Post, Controller, Res, Body, Req } from '@nestjs/common';
 import { User } from '../models/User';
 import { Profile } from '../enums/messages';
 import * as bcrypt from 'bcrypt-nodejs';
+import { UUID } from 'angular2-uuid';
 
 @Controller('user')
 export class ProfileController {
@@ -15,6 +16,7 @@ export class ProfileController {
 
     @Post('/login')
     login(@Res() res, @Body() body, @Req() req) {
+        const uuid = UUID.UUID();
         const callback = (err, docs) => {
             if (!docs.length) {
                 return res.status(403).send({message: Profile.notFound});
@@ -26,7 +28,7 @@ export class ProfileController {
                 res.status(202).send({
                     email: docs[0].email,
                     _id: docs[0]._id,
-                    token: 'jakistring'
+                    token: uuid
                 });
             });
         };
