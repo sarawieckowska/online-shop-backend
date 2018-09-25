@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     createdAt: Date,
     firstName : String,
     email: String,
-    password: String
+    password: String,
+    token: String
 });
 
 UserSchema.pre('save', function(next) {

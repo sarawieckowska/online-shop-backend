@@ -32,6 +32,6 @@ export class ProfileController {
                 });
             });
         };
-        User.find({email: body.email}).exec(callback);
+        User.find({email: body.email, token: body.token}).exec(callback);
     }
 }
